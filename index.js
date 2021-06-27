@@ -1,15 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const products = require('./products.json');
-const fs = require('fs').promises;
-const uid = require('uuid').v4;
 const ProductRepository = require('./ProductRepository');
-
 const PORT = process.env.PORT || 8000;
-
+const {authenticateMiddleware} = require('./middlewares/middleware');
 const app = express();
 app.use(cors()); 
 app.use(express.json());
+app.use(authenticateMiddleware);
 
 app.get('/',async (req,res) => {
     const products = await ProductRepository.getAll();
