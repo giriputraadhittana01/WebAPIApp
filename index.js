@@ -66,6 +66,6 @@ app.delete('/delete/:id', async(req,res) => {
 })
 
 app.listen(PORT,() => {
-    console.log(`listening on ${PORT}`);
+    console.log(`server listening on ${PORT}`);
 });
 
