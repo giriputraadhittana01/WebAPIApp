@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 dotenv.config();
 route.post('/login', async(req,res) => {
     if(req.body.username && req.body.password){
-        const token = jwt.sign({username:req.body.username},process.env.SECRET_KEY,{ expiresIn: 10 });
+        const token = jwt.sign({username:req.body.username},process.env.SECRET_KEY,{ expiresIn: "120s" });
         res.json({msg:'Success',data:token});
     }else{
         res.status(401).send('Username and Password Must Be Fill');
